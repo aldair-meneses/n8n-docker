@@ -1,3 +1,6 @@
+volumes:
+  postgres_storage:
+
 services:
   postgres:
     image: postgres:11
@@ -10,6 +13,8 @@ services:
       - POSTGRES_NON_ROOT_PASSWORD
     volumes:
       - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
+      - postgres_storage:/var/lib/postgresql/data
+  
   n8n:
     image: n8nio/n8n
     restart: always
@@ -32,6 +37,7 @@ services:
       - ${N8N_PUBLIC_PORT}:5678
     volumes:
       - ./.n8n:/home/node/.n8n
+  
   nginx:
     restart: always
     image: nginx:latest
