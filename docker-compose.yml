@@ -11,7 +11,7 @@ services:
     volumes:
       - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
   n8n:
-    image: n8nio/n8n:1.0.5
+    image: n8nio/n8n
     restart: always
     depends_on:
       - postgres
