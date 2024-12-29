@@ -35,8 +35,6 @@ services:
       - postgres
     ports:
       - ${N8N_PUBLIC_PORT}:5678
-    volumes:
-      - ./.n8n:/home/node/.n8n
   
   nginx:
     restart: always
